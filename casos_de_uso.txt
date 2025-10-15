@@ -1,0 +1,47 @@
+CASOS DE USO
+Módulo de Seguridad
+Módulo de Gestión de usuarios
+CU-001: Crear usuario
+CU-002: Buscar usuario por username
+CU-003: Actualizar usuario por username
+CU-004: Actualizar ultima fecha de login por user name
+Módulo de Gestión de sesiones
+CU-005: Crear sesion por usuario
+CU-006: Buscar sesion por id
+CU-007: Actualizar fecha de expiracion  de la sesion por id
+CU-008: Eliminar sesion por id
+Módulo de Gestión de Campañas
+CU-009: Crear nueva campaña de correo electrónico
+CU-010: Buscar campaña de correo electrónico por id
+CU-012: Recuperar campañas de correo electrónico ordenado por fecha de creacion y paginado
+CU-013: Una campaña puede actualizarse en estatus DRAFT, SCHEDULED (Antes de la fecha de ejecución)
+CU-014: Una campaña IN_PROGRESS puede pausarse
+CU-015: Una campaña COMPLETED no puede modificarse
+CU-016: Una campaña se puede Pausar/Reanudar su ejecución
+Módulo de Gestión de plantillas de correo electronico HTML
+CU-017: Crear plantilla de correo electronico HTML
+CU-018: Buscar plantilla de correo electronico HTML por id
+CU-019: Recuperar plantillas de correo electronico HTML por fecha de creacion y paginacion
+CU-020: Editar plantilla de correo electronico HTML
+Módulo de Gestión de archivos adjuntos
+CU-021: Crear archivo adjunto
+CU-022: Buscar archivo adjunto por id
+CU-023: Recuperar adjunto por fecha de creacion y paginacion
+CU-024: Editar archivo adjunto
+Módulo de Gestión de Bases de Datos (Emails)
+CU-025: Cargar base de datos de emails (archivos)
+CU-026: Detectar correos duplicados
+CU-027: Validar correos electrónicos (formato)
+CU-028: Adaptador de sistema DACI
+CU-029: Validar correos electrónicos con sistema DACI
+CU-030: Validar correos electrónicos con lista negra ()
+CU-031: Validar correos electrónicos con lista de cancelacion de suscripciones
+Módulo de Gestión de lista negra de correos electrónicos
+CU-032: Crear correo electronico en lista negra
+CU-031: Buscar correo electronico en lista negra
+Módulo de Gestión de lista de canselacion de suscripciones
+CU-032: Crear correo electronico que cancelo su suscripcion
+CU-033: Buscar correo electronico que cancelo su suscripcion
+Módulo de Gestión de lista blanca de correos electrónicos
+CU-034: Crear correo electronico que paso todas sus validaciones
+CU-034: Buscar correo electronico que paso todas sus validaciones
