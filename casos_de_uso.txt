@@ -30,11 +30,11 @@ CU-023: Recuperar adjunto por fecha de creacion y paginacion
 CU-024: Editar archivo adjunto
 Módulo de Gestión de Bases de Datos (Emails)
 CU-025: Cargar base de datos de emails (archivos)
-CU-026: Detectar correos duplicados
+CU-026: Detectar correos duplicados en el mismo archivo
 CU-027: Validar correos electrónicos (formato)
 CU-028: Adaptador de sistema DACI
 CU-029: Validar correos electrónicos con sistema DACI
-CU-030: Validar correos electrónicos con lista negra ()
+CU-030: Validar correos electrónicos con lista negra
 CU-031: Validar correos electrónicos con lista de cancelacion de suscripciones
 Módulo de Gestión de lista negra de correos electrónicos
 CU-032: Crear correo electronico en lista negra
