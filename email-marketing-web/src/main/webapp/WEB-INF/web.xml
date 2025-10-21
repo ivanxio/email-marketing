@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Email Marketing Web Application</display-name>
+    <description>Sistema de Gestión de Campañas de Email Marketing</description>
+
+    <!-- ============================================ -->
+    <!-- Configuración de la Aplicación               -->
+    <!-- ============================================ -->
+    <context-param>
+        <param-name>application.name</param-name>
+        <param-value>Email Marketing</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>application.version</param-name>
+        <param-value>1.0.0</param-value>
+    </context-param>
+
+    <!-- ============================================ -->
+    <!-- Welcome Files                                -->
+    <!-- ============================================ -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- ============================================ -->
+    <!-- Session Configuration                        -->
+    <!-- ============================================ -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <!-- ============================================ -->
+    <!-- Error Pages                                  -->
+    <!-- ============================================ -->
+    <!-- Comentadas hasta crear los archivos HTML -->
+    <!--
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.html</location>
+    </error-page>
+    -->
+
+</web-app>
+

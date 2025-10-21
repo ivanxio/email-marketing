@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ============================================ -->
+    <!-- Referencia al POM Padre                      -->
+    <!-- ============================================ -->
+    <parent>
+        <groupId>mx.gob.infonavit</groupId>
+        <artifactId>email-marketing</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- ============================================ -->
+    <!-- Información del Módulo                       -->
+    <!-- ============================================ -->
+    <artifactId>email-marketing-service</artifactId>
+    <packaging>ejb</packaging>
+
+    <name>Email Marketing - Service</name>
+    <description>Capa de Servicio: EJBs, Repositorios, Validadores, Procesadores y Lógica de Negocio</description>
+
+    <!-- ============================================ -->
+    <!-- Dependencias                                 -->
+    <!-- ============================================ -->
+    <dependencies>
+        <!-- Módulo Model -->
+        <dependency>
+            <groupId>mx.gob.infonavit</groupId>
+            <artifactId>email-marketing-model</artifactId>
+        </dependency>
+
+        <!-- Java EE 8 API (provided by WebSphere) -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- EclipseLink JPA -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- SLF4J para Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <!-- BCrypt para cifrado de passwords -->
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+        </dependency>
+
+        <!-- Apache POI para archivos Excel -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+        </dependency>
+
+        <!-- OpenCSV para archivos CSV -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+        </dependency>
+
+        <!-- Apache Commons IO -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
+        <!-- Apache Commons Lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- ============================================ -->
+    <!-- Plugins de Construcción                      -->
+    <!-- ============================================ -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <configuration>
+                    <ejbVersion>3.2</ejbVersion>
+                    <generateClient>true</generateClient>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+

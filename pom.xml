@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ============================================ -->
+    <!-- Información del Proyecto                     -->
+    <!-- ============================================ -->
+    <groupId>mx.gob.infonavit</groupId>
+    <artifactId>email-marketing</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Email Marketing - Parent</name>
+    <description>Sistema de Gestión de Campañas de Email Marketing para INFONAVIT</description>
+    <organization>
+        <name>INFONAVIT</name>
+    </organization>
+
+    <!-- ============================================ -->
+    <!-- Módulos del Proyecto                         -->
+    <!-- ============================================ -->
+    <modules>
+        <module>email-marketing-model</module>
+        <module>email-marketing-service</module>
+        <module>email-marketing-web</module>
+        <module>email-marketing-ear</module>
+    </modules>
+
+    <!-- ============================================ -->
+    <!-- Propiedades Globales                         -->
+    <!-- ============================================ -->
+    <properties>
+        <!-- Versión de Java -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Versiones de Java EE 8 -->
+        <javaee.api.version>8.0</javaee.api.version>
+        <jpa.version>2.2</jpa.version>
+        <ejb.version>3.2</ejb.version>
+        <servlet.version>4.0</servlet.version>
+        <jaxrs.version>2.1</jaxrs.version>
+        <cdi.version>2.0</cdi.version>
+        <bean.validation.version>2.0.1.Final</bean.validation.version>
+
+        <!-- Versiones de Dependencias -->
+        <eclipselink.version>2.7.12</eclipselink.version>
+        <slf4j.version>1.7.36</slf4j.version>
+        <bcrypt.version>0.10.2</bcrypt.version>
+        <poi.version>5.2.3</poi.version>
+        <opencsv.version>5.7.1</opencsv.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <swagger.version>1.6.11</swagger.version>
+
+        <!-- Versiones de Plugins Maven -->
+        <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+        <maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
+        <maven.war.plugin.version>3.3.2</maven.war.plugin.version>
+        <maven.ear.plugin.version>3.3.0</maven.ear.plugin.version>
+        <maven.resources.plugin.version>3.3.0</maven.resources.plugin.version>
+    </properties>
+
+    <!-- ============================================ -->
+    <!-- Gestión de Dependencias (DependencyManagement)-->
+    <!-- ============================================ -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Módulos del Proyecto -->
+            <dependency>
+                <groupId>mx.gob.infonavit</groupId>
+                <artifactId>email-marketing-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mx.gob.infonavit</groupId>
+                <artifactId>email-marketing-service</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>mx.gob.infonavit</groupId>
+                <artifactId>email-marketing-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+
+            <!-- Java EE 8 API -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javaee.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- JPA / EclipseLink -->
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>eclipselink</artifactId>
+                <version>${eclipselink.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Bean Validation -->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${bean.validation.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- SLF4J para Logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <!-- BCrypt para Passwords -->
+            <dependency>
+                <groupId>at.favre.lib</groupId>
+                <artifactId>bcrypt</artifactId>
+                <version>${bcrypt.version}</version>
+            </dependency>
+
+            <!-- Apache POI para Excel -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- OpenCSV para archivos CSV -->
+            <dependency>
+                <groupId>com.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>${opencsv.version}</version>
+            </dependency>
+
+            <!-- Apache Commons IO -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <!-- Apache Commons Lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- Swagger para documentación de API -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-jaxrs</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ============================================ -->
+    <!-- Plugins de Construcción                      -->
+    <!-- ============================================ -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Maven Compiler Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven EJB Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${maven.ejb.plugin.version}</version>
+                    <configuration>
+                        <ejbVersion>3.2</ejbVersion>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven WAR Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven.war.plugin.version}</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven EAR Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>${maven.ear.plugin.version}</version>
+                    <configuration>
+                        <version>8</version>
+                        <defaultLibBundleDir>lib</defaultLibBundleDir>
+                        <skinnyWars>true</skinnyWars>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven Resources Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven.resources.plugin.version}</version>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
+

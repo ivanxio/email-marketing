@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Implementation-Title: Email Marketing Web
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor: INFONAVIT
+Built-By: Maven
+Build-Jdk: 1.8
+

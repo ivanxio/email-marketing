@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+             http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd"
+             version="7">
+
+    <application-name>email-marketing</application-name>
+    <description>Sistema de Gestión de Campañas de Email Marketing para INFONAVIT</description>
+    <display-name>Email Marketing Application</display-name>
+
+    <!-- ============================================ -->
+    <!-- Módulos de la Aplicación                     -->
+    <!-- ============================================ -->
+
+    <!-- Módulo EJB -->
+    <module>
+        <ejb>email-marketing-service.jar</ejb>
+    </module>
+
+    <!-- Módulo Web -->
+    <module>
+        <web>
+            <web-uri>email-marketing-web.war</web-uri>
+            <context-root>/email-marketing</context-root>
+        </web>
+    </module>
+
+    <!-- ============================================ -->
+    <!-- Configuración de Seguridad                   -->
+    <!-- ============================================ -->
+    <!-- Roles de seguridad a nivel de aplicación -->
+    <security-role>
+        <description>Administradores del sistema</description>
+        <role-name>ADMIN</role-name>
+    </security-role>
+
+    <security-role>
+        <description>Usuarios regulares del sistema</description>
+        <role-name>USER</role-name>
+    </security-role>
+
+    <!-- ============================================ -->
+    <!-- Directorio de Librerías                      -->
+    <!-- ============================================ -->
+    <library-directory>lib</library-directory>
+
+</application>
+

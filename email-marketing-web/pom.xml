@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ============================================ -->
+    <!-- Referencia al POM Padre                      -->
+    <!-- ============================================ -->
+    <parent>
+        <groupId>mx.gob.infonavit</groupId>
+        <artifactId>email-marketing</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- ============================================ -->
+    <!-- Información del Módulo                       -->
+    <!-- ============================================ -->
+    <artifactId>email-marketing-web</artifactId>
+    <packaging>war</packaging>
+
+    <name>Email Marketing - Web</name>
+    <description>Capa Web: REST Controllers, Filtros, Interceptores y Exception Mappers</description>
+
+    <!-- ============================================ -->
+    <!-- Dependencias                                 -->
+    <!-- ============================================ -->
+    <dependencies>
+        <!-- Módulo Model -->
+        <dependency>
+            <groupId>mx.gob.infonavit</groupId>
+            <artifactId>email-marketing-model</artifactId>
+        </dependency>
+
+        <!-- Módulo Service (EJB) -->
+        <dependency>
+            <groupId>mx.gob.infonavit</groupId>
+            <artifactId>email-marketing-service</artifactId>
+            <type>ejb</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Java EE 8 API (provided by WebSphere) -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- SLF4J para Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <!-- Swagger para documentación de API -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jaxrs</artifactId>
+            <exclusions>
+                <!-- Excluir JAX-RS API ya que WebSphere lo proporciona -->
+                <exclusion>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>jsr311-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- ============================================ -->
+    <!-- Plugins de Construcción                      -->
+    <!-- ============================================ -->
+    <build>
+        <finalName>email-marketing-web</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
