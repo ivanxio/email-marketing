@@ -73,13 +73,6 @@ public class TemplateService implements ITemplateService {
         return templateMapper.toDtoList(templates);
     }
 
-    /**
-     * Valida los parámetros de paginación.
-     * 
-     * @param page número de página
-     * @param size tamaño de página
-     * @throws InvalidTemplateException si los parámetros son inválidos
-     */
     private void validatePaginationParameters(int page, int size) {
         if (page < 0) {
             throw new InvalidTemplateException("El número de página no puede ser negativo");
