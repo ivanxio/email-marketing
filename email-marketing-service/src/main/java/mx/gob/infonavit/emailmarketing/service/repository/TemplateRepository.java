@@ -1,6 +1,7 @@
 package mx.gob.infonavit.emailmarketing.service.repository;
 
 import mx.gob.infonavit.emailmarketing.service.entity.Template;
+import javax.persistence.Query;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -41,13 +42,12 @@ public class TemplateRepository implements ITemplateRepository {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Template> findAll(int offset, int limit) {
-        TypedQuery<Template> query = entityManager.createNamedQuery(
-            Template.FIND_ALL_ORDERED_BY_DATE,
-            Template.class
-        );
+        Query query = entityManager.createNamedQuery(Template.FIND_ALL_ORDERED_BY_DATE);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
-        return query.getResultList();
+        List<Template> templates = query.getResultList();
+        return templates;
     }
 }

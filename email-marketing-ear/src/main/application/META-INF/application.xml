@@ -27,20 +27,6 @@
     </module>
 
     <!-- ============================================ -->
-    <!-- Configuración de Seguridad                   -->
-    <!-- ============================================ -->
-    <!-- Roles de seguridad a nivel de aplicación -->
-    <security-role>
-        <description>Administradores del sistema</description>
-        <role-name>ADMIN</role-name>
-    </security-role>
-
-    <security-role>
-        <description>Usuarios regulares del sistema</description>
-        <role-name>USER</role-name>
-    </security-role>
-
-    <!-- ============================================ -->
     <!-- Directorio de Librerías                      -->
     <!-- ============================================ -->
     <library-directory>lib</library-directory>

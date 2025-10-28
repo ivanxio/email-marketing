@@ -11,6 +11,10 @@
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
+        <!-- Entidades del sistema -->
+        <class>mx.gob.infonavit.emailmarketing.service.entity.Template</class>
+        <class>mx.gob.infonavit.emailmarketing.service.entity.Campaign</class>
+
         <properties>
             <!-- EclipseLink Properties -->
             <property name="eclipselink.target-server" value="WebSphere_9"/>

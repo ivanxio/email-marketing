@@ -22,29 +22,18 @@ import java.util.regex.Pattern;
 @Stateless
 public class TemplateValidator {
 
-    // Constantes de validación - Expresiones regulares
     private static final String REGEX_ONLY_WHITESPACE = "\\s+";
     private static final String REGEX_ALLOWED_NAME_CHARACTERS = "[a-zA-Z0-9\\s\\-_áéíóúÁÉÍÓÚñÑ]+";
 
-    // Constantes de validación - Longitudes
     private static final int MIN_NAME_LENGTH = 3;
     private static final int MAX_NAME_LENGTH = 255;    
     private static final int MIN_HTML_LENGTH = 50;
     private static final int MAX_HTML_LENGTH = 500000; // 500KB
 
-    /**
-     * Valida una solicitud de creación de plantilla.
-     * 
-     * @param request request a validar
-     * @throws InvalidTemplateException si la validación falla
-     */
     public void validateCreateRequest(TemplateCreateRequest request) {
         List<String> errors = new ArrayList<>();
 
-        // Validar nombre
         validateName(request.getName(), errors);
-
-        // Validar contenido HTML
         validateHtmlContent(request.getHtmlContent(), errors);
 
         if (!errors.isEmpty()) {

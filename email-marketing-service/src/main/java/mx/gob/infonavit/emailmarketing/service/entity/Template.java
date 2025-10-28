@@ -11,27 +11,18 @@ import java.util.Objects;
 /**
  * Entidad que representa una plantilla HTML de correo electrónico.
  * 
- * Esta entidad almacena plantillas reutilizables para campañas de email marketing.
- * Cada plantilla contiene contenido HTML.
- * 
  * @author Ivan Garcia igarciam@desarrollo-ultrasis.com.mx
  * @version 1.0.0
  * @since 2025-10-20
  */
 @Entity
 @Table(name = "templates", indexes = {
-    @Index(name = "idx_templates_created_by", columnList = "created_by"),
-    @Index(name = "idx_templates_is_active", columnList = "is_active"),
     @Index(name = "idx_templates_created_at", columnList = "created_at")
 })
 @NamedQueries({
     @NamedQuery(
         name = Template.FIND_ALL_ORDERED_BY_DATE,
         query = "SELECT t FROM Template t ORDER BY t.createdAt DESC"
-    ),
-    @NamedQuery(
-        name = Template.FIND_BY_NAME_CONTAINING,
-        query = "SELECT t FROM Template t WHERE LOWER(t.name) LIKE LOWER(:name) ORDER BY t.createdAt DESC"
     )
 })
 public class Template implements Serializable {
@@ -39,7 +30,7 @@ public class Template implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String FIND_ALL_ORDERED_BY_DATE = "Template.findAllOrderedByDate";
-    public static final String FIND_BY_NAME_CONTAINING = "Template.findByNameContaining";
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +43,7 @@ public class Template implements Serializable {
     private String name;
 
     @Size(max = 500, message = "La descripción no puede exceder 500 caracteres")
-    @Column(name = "description", length = 500)
+    @Column(name = "description", nullable = false, length = 500)
     private String description;
 
     @NotBlank(message = "El contenido HTML es obligatorio")
@@ -63,6 +54,9 @@ public class Template implements Serializable {
     @NotNull(message = "El creador de la plantilla es obligatorio")
     @Column(name = "created_by", nullable = false)
     private Long createdBy;
+
+    @Column(name = "updated_by")
+    private Long updatedBy;
 
     @NotNull
     @Column(name = "is_active", nullable = false)
@@ -81,6 +75,7 @@ public class Template implements Serializable {
                     String description,
                     String htmlContent,
                     Long createdBy,
+                    Long updatedBy,
                     Boolean isActive,
                     LocalDateTime createdAt,
                     LocalDateTime updatedAt) {
@@ -90,6 +85,7 @@ public class Template implements Serializable {
         this.description = description;
         this.htmlContent = htmlContent;
         this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
         this.isActive = isActive;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -135,6 +131,14 @@ public class Template implements Serializable {
         this.createdBy = createdBy;
     }
 
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
     public Boolean getIsActive() {
         return isActive;
     }
@@ -173,6 +177,7 @@ public class Template implements Serializable {
                 Objects.equals(description, that.description) &&
                 Objects.equals(htmlContent, that.htmlContent) &&
                 Objects.equals(createdBy, that.createdBy) &&
+                Objects.equals(updatedBy, that.updatedBy) &&
                 Objects.equals(isActive, that.isActive) &&
                 Objects.equals(createdAt, that.createdAt) &&
                 Objects.equals(updatedAt, that.updatedAt);
@@ -186,10 +191,27 @@ public class Template implements Serializable {
                 description,
                 htmlContent,
                 createdBy,
+                updatedBy,
                 isActive,
                 createdAt,
                 updatedAt
         );
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Template{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", htmlContent='").append(htmlContent).append('\'');
+        sb.append(", createdBy=").append(createdBy);
+        sb.append(", updatedBy=").append(updatedBy);
+        sb.append(", isActive=").append(isActive);
+        sb.append(", createdAt=").append(createdAt);
+        sb.append(", updatedAt=").append(updatedAt);
+        sb.append('}');
+        return sb.toString();
     }
 }
 

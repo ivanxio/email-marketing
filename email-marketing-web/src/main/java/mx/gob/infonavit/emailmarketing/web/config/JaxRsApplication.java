@@ -3,6 +3,7 @@ package mx.gob.infonavit.emailmarketing.web.config;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
 import mx.gob.infonavit.emailmarketing.web.rest.TemplateController;
+import mx.gob.infonavit.emailmarketing.web.rest.CampaignController;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -32,6 +33,7 @@ public class JaxRsApplication extends Application {
         
         // REST Controllers
         resources.add(TemplateController.class);
+        resources.add(CampaignController.class);
         
         return resources;
     }

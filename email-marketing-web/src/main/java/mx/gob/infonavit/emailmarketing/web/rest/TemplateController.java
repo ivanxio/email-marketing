@@ -4,6 +4,7 @@ import io.swagger.annotations.*;
 import mx.gob.infonavit.emailmarketing.model.dto.request.TemplateCreateRequest;
 import mx.gob.infonavit.emailmarketing.model.dto.request.TemplateUpdateRequest;
 import mx.gob.infonavit.emailmarketing.model.dto.response.TemplateResponse;
+import mx.gob.infonavit.emailmarketing.model.dto.response.ErrorResponse;
 import mx.gob.infonavit.emailmarketing.service.exception.InvalidTemplateException;
 import mx.gob.infonavit.emailmarketing.service.exception.TemplateNotFoundException;
 import mx.gob.infonavit.emailmarketing.service.use_case.ITemplateService;
@@ -12,9 +13,7 @@ import javax.ejb.EJB;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Controlador REST para la gestión de plantillas de correo electrónico.
@@ -61,7 +60,7 @@ public class TemplateController {
         try {
             if (userId == null) {
                 return Response.status(Response.Status.UNAUTHORIZED)
-                        .entity(createErrorResponse("Usuario no autenticado"))
+                        .entity(ErrorResponse.badRequest("Usuario no autenticado"))
                         .build();
             }
 
@@ -70,11 +69,11 @@ public class TemplateController {
 
         } catch (InvalidTemplateException e) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(createErrorResponse(e.getMessage()))
+                    .entity(ErrorResponse.validationError(e.getMessage()))
                     .build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(createErrorResponse("Error interno al crear la plantilla"))
+                    .entity(ErrorResponse.internalServerError("Error interno al crear la plantilla"))
                     .build();
         }
     }
@@ -100,11 +99,11 @@ public class TemplateController {
 
         } catch (TemplateNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(createErrorResponse(e.getMessage()))
+                    .entity(ErrorResponse.notFound(e.getMessage()))
                     .build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(createErrorResponse("Error interno al obtener la plantilla"))
+                    .entity(ErrorResponse.internalServerError("Error interno al obtener la plantilla"))
                     .build();
         }
     }
@@ -133,11 +132,11 @@ public class TemplateController {
 
         } catch (InvalidTemplateException e) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(createErrorResponse(e.getMessage()))
+                    .entity(ErrorResponse.validationError(e.getMessage()))
                     .build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(createErrorResponse("Error interno al obtener plantillas"))
+                    .entity(ErrorResponse.internalServerError("Error interno al obtener plantillas"))
                     .build();
         }
     }
@@ -167,23 +166,16 @@ public class TemplateController {
 
         } catch (TemplateNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(createErrorResponse(e.getMessage()))
+                    .entity(ErrorResponse.notFound(e.getMessage()))
                     .build();
         } catch (InvalidTemplateException e) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(createErrorResponse(e.getMessage()))
+                    .entity(ErrorResponse.validationError(e.getMessage()))
                     .build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(createErrorResponse("Error interno al actualizar la plantilla"))
+                    .entity(ErrorResponse.internalServerError("Error interno al actualizar la plantilla"))
                     .build();
         }
-    }
-
-    private Map<String, Object> createErrorResponse(String message) {
-        Map<String, Object> error = new HashMap<>();
-        error.put("error", message);
-        error.put("timestamp", System.currentTimeMillis());
-        return error;
     }
 }
